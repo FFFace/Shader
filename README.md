@@ -1,6 +1,6 @@
 # Shader - 전일우
 
-##CartoonShader / Surface
+## CartoonShader / Surface
 
 1 Pass 쉐이더입니다
 TwoTone, Outline, Specualr 총 3가지를 구현했습니다.
@@ -51,7 +51,7 @@ TwoTone, Outline, Specualr 총 3가지를 구현했습니다.
   ceil로 간단하게 만든 Dissolve 효과입니다.
   _DissovleAmount가 커질수록 Dissovle 영역이 굵어집니다.
   
-###최종 출력
+### 최종 출력
 ```
 o.Albedo = ((c + fSpecularColor) * tone * outline * dissolve) + (_DissolveColor * (1 - dissolve));
 dissolve = ceil(mask.r - _DissolveAmount);
