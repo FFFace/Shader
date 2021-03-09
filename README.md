@@ -1,6 +1,8 @@
 # Shader - 전일우
 
 ## CartoonShader / Surface
+> NormalMap의 유무를 제외하면 Cartoon_NoneNormalMap과의 차이는 없습니다.
+
 
 1 Pass 쉐이더입니다
 TwoTone, Outline, Specualr 총 3가지를 구현했습니다.
