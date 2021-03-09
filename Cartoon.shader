@@ -106,7 +106,7 @@ Shader "Custom/test"
             fixed4 smap = tex2D(_SpecularMap, IN.uv_SpecularMap);
             o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 
-            half dissolve = ceil(mask.r - (_DissolveAmount + _DissolveWidth));
+            half dissolveWidth = ceil(mask.r - (_DissolveAmount + _DissolveWidth));
 
             half toneDot = dot(IN.lightDir, o.Normal) * 0.5f + 0.5f;
             half tone = ceil(toneDot * 2) / 2;
@@ -121,8 +121,8 @@ Shader "Custom/test"
             float spec = ceil(pow(fRDotV, _Specular) * _Smoothness * _SpecularColor.rgb * smap.r -0.3);
             fSpecularColor = spec * _Smoothness * _SpecularColor.rgb * smap.a;
 
-            o.Albedo = ((c + fSpecularColor) * tone * outline * dissolve) + (_DissolveColor * (ceil(mask.r) - dissolve));
-            dissolve = ceil(mask.r - _DissolveAmount);
+            o.Albedo = ((c + fSpecularColor) * tone * outline * dissolveWidth) + (_DissolveColor * (ceil(mask.r) - dissolveWidth));
+            half dissolve = ceil(mask.r - _DissolveAmount);
             o.Alpha = dissolve;            
 
             o.Emission = o.Albedo;
